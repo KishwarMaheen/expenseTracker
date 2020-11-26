@@ -26,12 +26,16 @@ def item_detail(request, category_id, item_id):
 
 
 def add_category(request):
-    return HttpResponse("Still in development")
+    return render(request, 'expenses/edit_item.html')
 
 
-def add_item(response, category_id):
-    return HttpResponse("Still in development")
+def add_item(request, category_id):
+    return render(request,
+                  'expenses/add_item.html',
+                  {'category': get_object_or_404(Category, pk=category_id)})
 
 
-def edit_item(response, category_id, item_id):
-    return HttpResponse("Still in development")
+def edit_item(request, category_id, item_id):
+    return render(request,
+                  'expenses/edit_item.html',
+                  {'item': get_object_or_404(Item, pk=item_id)})
