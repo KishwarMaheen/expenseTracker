@@ -5,6 +5,11 @@
     <title>Title</title>
 </head>
 <body>
-
+    <form method="post" action="edit_item_process">
+        {% csrf_token %}
+        Name: <input type="text" name="item_name"> <br>
+        Amount: <input type="number" name="item_amount"> <br>
+        <input type="submit" value="Edit">
+    </form>
 </body>
 </html>

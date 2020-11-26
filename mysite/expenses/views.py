@@ -46,4 +46,21 @@ def add_category_process(request):
     name = request.POST['category_name']
     c = Category(name=name)
     c.save()
-    return HttpResponseRedirect("http://localhost:8000/expenses/");
+    return HttpResponseRedirect("http://localhost:8000/expenses/")
+
+
+def add_item_process(request, category_id):
+    c = get_object_or_404(Category, pk=category_id)
+    name = request.POST['item_name']
+    amount = request.POST['item_amount']
+    c.item_set.create(name=name, amount=amount)
+    return HttpResponseRedirect("http://localhost:8000/expenses/category_detail/{}".
+                                format(category_id))
+
+
+def edit_item_process(request, category_id, item_id):
+    i = get_object_or_404(Item, pk=item_id)
+    i.name = request.POST['item_name']
+    i.amount = request.POST['item_amount']
+    i.save()
+    return HttpResponseRedirect("http://localhost:8000/expenses/category_detail/{}".format(category_id, item_id))

@@ -2,9 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Expenses App | Add Item</title>
 </head>
 <body>
-
+    <form method="post" action="add_item_process">
+        {% csrf_token %}
+        Name: <input type="text" name="item_name"> <br>
+        Amount: <input type="number" name="item_amount" step=".01"> <br>
+        <input type="submit" value="Add">
+    </form>
 </body>
 </html>
