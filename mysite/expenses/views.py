@@ -1,7 +1,8 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import Category, Item
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Sum
+from django.urls import reverse
 
 
 # Create your views here.
@@ -26,7 +27,7 @@ def item_detail(request, category_id, item_id):
 
 
 def add_category(request):
-    return render(request, 'expenses/edit_item.html')
+    return render(request, 'expenses/add_category.html')
 
 
 def add_item(request, category_id):
@@ -39,3 +40,10 @@ def edit_item(request, category_id, item_id):
     return render(request,
                   'expenses/edit_item.html',
                   {'item': get_object_or_404(Item, pk=item_id)})
+
+
+def add_category_process(request):
+    name = request.POST['category_name']
+    c = Category(name=name)
+    c.save()
+    return HttpResponseRedirect("http://localhost:8000/expenses/");

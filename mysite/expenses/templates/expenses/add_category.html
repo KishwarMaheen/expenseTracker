@@ -5,6 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-
+    <form method="post" action="add_category_process/">
+        {% csrf_token %}
+        Name: <input type="text" name="category_name"> <br>
+        <input type="submit" value="Add">
+    </form>
 </body>
 </html>

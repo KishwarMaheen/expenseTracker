@@ -12,7 +12,7 @@
     {% if category %}
     <ul>
         {% for item in category.item_set.all %}
-        <li><a href="{{category.id}}/{{item.id}}">{{item.name}}: {{item.price}}</a></li>
+        <li><a href="{{category.id}}/item_detail/{{item.id}}">{{item.name}}: {{item.amount}}</a></li>
         {% endfor %}
     </ul>
     <p>Total: {{total_expense}}</p>

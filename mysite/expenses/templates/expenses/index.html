@@ -8,7 +8,7 @@
     {% if category_list %}
     <ul>
         {% for category in category_list %}
-        <li><a href="{{ category.id }}">{{ category }}</a></li>
+        <li><a href="category_detail/{{ category.id }}">{{ category }}</a></li>
         {% endfor %}
     </ul>
     {% else %}
