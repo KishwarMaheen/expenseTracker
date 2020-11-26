@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% if category %}
+    <title>Expenses App | {{category.name}} </title>
+    {% else %}
+    <title>Expenses App | Null</title>
+    {% endif %}
+</head>
+<body>
+    {% if category %}
+    <ul>
+        {% for item in category.item_set.all %}
+        <li><a href="{{category.id}}/{{item.id}}">{{item.name}}: {{item.price}}</a></li>
+        {% endfor %}
+    </ul>
+    <p>Total: {{total_expense}}</p>
+    <a href="{{category.id}}/add_item">Add Item Here!</a>
+    {% else %}
+    <p>Category Not Found!</p>
+    {% endif %}
+</body>
+</html>

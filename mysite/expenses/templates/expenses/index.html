@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expenses App | Welcome</title>
+</head>
+<body>
+    {% if category_list %}
+    <ul>
+        {% for category in category_list %}
+        <li><a href="{{ category.id }}">{{ category }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No categories! Please add one by clicking the link below.</p>
+    {% endif %}
+    <a href="add_category">Add Category</a>
+</body>
+</html>
