@@ -15,7 +15,7 @@
         <li><a href="{{category.id}}/item_detail/{{item.id}}">{{item.name}}: {{item.amount}}</a></li>
         {% endfor %}
     </ul>
-    <p>Total: {{total_expense}}</p>
+    <p>Total: {{category.total_amount}}</p>
     <a href="{{category.id}}/add_item">Add Item Here!</a>
     {% else %}
     <p>Category Not Found!</p>

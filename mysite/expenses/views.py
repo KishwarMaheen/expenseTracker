@@ -14,10 +14,11 @@ def index(request):
 
 def category_detail(request, category_id):
     category = get_object_or_404(Category, pk=category_id)
+    category.total_amount = category.item_set.all().aggregate(Sum('amount'))['amount__sum']
+    category.save()
     return render(request,
                   'expenses/category_detail.html',
-                  {'category': category,
-                   'total_expense': category.item_set.all().aggregate(Sum('amount'))['amount__sum']})
+                  {'category': category})
 
 
 def item_detail(request, category_id, item_id):
